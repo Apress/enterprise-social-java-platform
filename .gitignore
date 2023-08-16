@@ -1,0 +1,17 @@
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+release.properties
+/.settings
+/.classpath
+/.project
+/tck-results
+/test-output
+
+# IntelliJ #
+.idea/
+*.iml
+
+# OS Files #
+.DS_Store
