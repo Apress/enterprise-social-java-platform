@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.apress.entsocjava</groupId>
+        <artifactId>enterprise-social-java-platform</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>chapter6</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Chapter 6 - Social Frameworks</name>
+
+    <modules>
+        <module>javastrava-api</module>
+        <module>jstrava</module>
+    </modules>
+
+    <properties>
+        <javastrava-api.version>1.0.1</javastrava-api.version>
+    </properties>
+
+    <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.github.danshannon</groupId>
+				<artifactId>javastrava-api</artifactId>
+				<version>${javastrava-api.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcpkix-jdk15on</artifactId>
+				<version>${bouncy.castle.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

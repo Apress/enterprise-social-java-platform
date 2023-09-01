@@ -39,6 +39,7 @@
 	</prerequisites>
 
 	<modules>
+		<module>chapter5</module>
 		<module>chapter6</module>
 	</modules>
 
