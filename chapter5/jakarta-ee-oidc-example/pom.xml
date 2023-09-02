@@ -16,7 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.release>17</maven.compiler.release>
 
-        <!-- Official Maven Plugins -->
+        <!-- Maven Plugins -->
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
@@ -32,10 +32,10 @@
         <skip.integration.tests>true</skip.integration.tests>
 
         <!-- Wildfly server -->
-        <wildfly.artifactId>wildfly-preview-dist</wildfly.artifactId>
-        <wildfly.version>27.0.0.Final</wildfly.version>
+        <wildfly.artifactId>wildfly-dist</wildfly.artifactId>
+        <wildfly.version>27.0.1.Final</wildfly.version>
         <wildfly-maven-plugin.version>4.0.0.Final</wildfly-maven-plugin.version>
-        <jboss-as.home>${project.build.directory}/wildfly-preview-${wildfly.version}</jboss-as.home>
+        <jboss-as.home>${project.build.directory}/wildfly-${wildfly.version}</jboss-as.home>
     </properties>
 
     <dependencies>
@@ -44,11 +44,6 @@
             <artifactId>jakarta.jakartaee-api</artifactId>
             <version>${jakartaee-api.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.10.1</version>
         </dependency>
     </dependencies>
 
@@ -196,5 +191,4 @@
             </snapshots>
         </repository>
     </repositories>
-
 </project>
