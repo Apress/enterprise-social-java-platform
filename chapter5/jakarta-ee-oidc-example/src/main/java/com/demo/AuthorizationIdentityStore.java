@@ -34,7 +34,7 @@ public class AuthorizationIdentityStore implements IdentityStore {
             properties.load(getClass().getResourceAsStream("/oidc.properties"));
             email = properties.getProperty("email", "");
             LOGGER.log(
-                    Level.INFO,
+                    Level.INFO, // TODO maybe change to DEBUG
                     "email: {0}",
                     new Object[] { email });
         } catch (IOException e) {
@@ -57,7 +57,7 @@ public class AuthorizationIdentityStore implements IdentityStore {
     @Override
     public Set<String> getCallerGroups(CredentialValidationResult validationResult) {
         var principal = validationResult.getCallerPrincipal().getName();
-        LOGGER.log(Level.INFO, "Get principal name in validation result: {0}", principal);
+        LOGGER.log(Level.INFO, "Get principal name in validation result: {0}", principal); // TODO maybe change to DEBUG
         LOGGER.log(Level.INFO, "claims json:" + context.getClaimsJson());
         LOGGER.log(Level.INFO, "provider json:" + context.getProviderMetadata());
         var issuer = context.getProviderMetadata().getString("issuer");
