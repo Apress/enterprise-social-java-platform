@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>chapter6</artifactId>
+    <artifactId>chapter5</artifactId>
     <packaging>pom</packaging>
 
     <name>Chapter 5 - Security Frameworks</name>
