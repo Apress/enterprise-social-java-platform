@@ -4,19 +4,16 @@
 
 Before you start, please make sure you have the following prerequisites installed (or install them now).
 
-- [Java 17](https://adoptium.net/): or use Java 11 (minimum version for Jakarta EE 10)
+- [Java 11](https://adoptium.net/de/temurin/releases/?version=17): or use [Java 11](https://adoptium.net/de/temurin/releases/?version=11) (minimum version for Jakarta EE 10)
 - [HTTPie](https://httpie.org/doc#installation): a simple tool for making HTTP requests from a Bash shell
-
-
- ## Create an OIDC Application
- 
+- [Maven](https://maven.apache.org/) installed, version 3.0 or above
 
 ## Start the project
 
 Use this command to start the project.
 
 ```bash
-./mvnw wildfly:run
+./mvn wildfly:run
 ```
 
 Using a browser, open `http://localhost:8080/protected`. You should be prompted to log in.

@@ -12,4 +12,7 @@
     <packaging>pom</packaging>
 
     <name>Chapter 6 - Social Frameworks</name>
+    <modules>
+		<module>bigbone-sample-java</module>
+	</modules>
 </project>
