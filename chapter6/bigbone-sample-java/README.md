@@ -17,12 +17,29 @@ Before you start, please make sure you have the following prerequisites installe
 
 ## Start the project
 
-Use this command to start the project.
+There are two types of sample apps:
+1. Public
+2. Account Specific
+
+### Public
+Use this command to start public samples.
 
 ```bash
-mvn clean package
-
+mvn compile exec:java -Dexec.mainClass="<Your main class>" -Dexec.args="<mastodon.instance>" -Dexec.cleanupDaemonThreads=false
 ```
+
+<Your main class> is one of the following:
+- `com.apress.entsocjava.bigbone.GetInstanceInfo`
+- `com.apress.entsocjava.bigbone.GetPublicTimeline`
+
+### Account Specific
+Use this command to start account specific samples.
+
+```bash
+mvn compile exec:java -Dexec.mainClass="<Your main class>" -Dexec.args="<mastodon.instance>, <Your access token>" -Dexec.cleanupDaemonThreads=false
+```
+
+
 
 ## Links
 
