@@ -25,10 +25,10 @@ There are two types of sample apps:
 Use this command to start public samples.
 
 ```bash
-mvn compile exec:java -Dexec.mainClass="<Your main class>" -Dexec.args="<mastodon.instance>" -Dexec.cleanupDaemonThreads=false
+mvn compile exec:java -Dexec.mainClass="Your main class" -Dexec.args="<mastodon.instance>" -Dexec.cleanupDaemonThreads=false
 ```
 
-<Your main class> is one of the following:
+`Your main class` is one of the following:
 - `com.apress.entsocjava.bigbone.GetInstanceInfo`
 - `com.apress.entsocjava.bigbone.GetPublicTimeline`
 
@@ -36,10 +36,12 @@ mvn compile exec:java -Dexec.mainClass="<Your main class>" -Dexec.args="<mastodo
 Use this command to start account specific samples.
 
 ```bash
-mvn compile exec:java -Dexec.mainClass="<Your main class>" -Dexec.args="<mastodon.instance>, <Your access token>" -Dexec.cleanupDaemonThreads=false
+mvn compile exec:java -Dexec.mainClass="Your main class" -Dexec.args="<mastodon.instance>, <Your access token>" -Dexec.cleanupDaemonThreads=false
 ```
 
-
+`Your main class` is one of the following:
+- `com.apress.entsocjava.bigbone.GetConversations`
+- `com.apress.entsocjava.bigbone.GetHomeTimelineWithFiltering`
 
 ## Links
 
