@@ -12,7 +12,7 @@ The recommended minimum Java version is Java 17.
 
 While most chapters also still run with Java 11.
 
-All Java examples build with Maven 3.5 or above.
+All Java examples build with Maven 3.6.3 or above.
 
 Selected examples for other JVM languages like Kotlin may require Gradle where indicated.
 
