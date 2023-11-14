@@ -35,7 +35,7 @@
 	</developers>
 
 	<prerequisites>
-		<maven>3.5.0</maven>
+		<maven>3.6.3</maven>
 	</prerequisites>
 
 	<modules>
@@ -118,7 +118,7 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<!-- Sets minimal Maven version to 3.5.0 -->
+			<!-- Sets minimal Maven version to 3.6.3 -->
 			<plugin>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<version>3.4.1</version>
@@ -131,7 +131,7 @@
 						<configuration>
 							<rules>
 								<requireMavenVersion>
-									<version>3.5.0</version>
+									<version>3.6.3</version>
 								</requireMavenVersion>
 							</rules>
 						</configuration>

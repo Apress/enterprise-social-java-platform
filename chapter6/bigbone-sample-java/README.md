@@ -5,7 +5,7 @@
 Before you start, please make sure you have the following prerequisites installed (or install them now).
 
 - [Java 11](https://adoptium.net/de/temurin/releases/?version=11)
-- [Maven](https://maven.apache.org/): version 3.0 or above
+- [Maven](https://maven.apache.org/): version 3.6.3 or above
 
 
 ## Create an OIDC Application
