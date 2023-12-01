@@ -1,7 +1,7 @@
 # Apress Source Code
 
 This repository accompanies [*Enterprise Social for the Java Platform*](https://link.springer.com/book/10.1007/978-1-4842-9571-7) by Werner Keil (Apress, 2023).
-![Mastodon Profile](https://jvm.social/@enterprisebook)
+[Mastodon Profile](https://jvm.social/@enterprisebook)
 
 [comment]: #cover
 
