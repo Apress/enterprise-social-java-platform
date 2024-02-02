@@ -10,7 +10,7 @@ This module contains links to the source code for examples from chapter 6 of the
 ### Discord
 * [Discord4J Example Projects](https://github.com/Discord4J/example-projects)
 * [JDA Examples Directory](https://github.com/discord-jda/JDA/tree/master/src/examples/java)
-* [Javacord | Creating a Bot Account](https://javacord.org/wiki/getting-started/creating-a-bot-account.htm)
+* [Javacord | Writing your first bot](https://javacord.org/wiki/getting-started/writing-your-first-bot.html)
  
 ### Twitch4J
 * [Twitch4J - Chatbot Template](https://github.com/twitch4j/twitch4j-chatbot)
