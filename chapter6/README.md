@@ -7,6 +7,11 @@ This module contains links to the source code for examples from chapter 6 of the
 ### Mastodon
 * [BigBone Java Samples](bigbone-sample-java)
 
+### Discord
+* [Discord4J Example Projects](https://github.com/Discord4J/example-projects)
+* [JDA Examples Directory](https://github.com/discord-jda/JDA/tree/master/src/examples/java)
+* [Javacord | Creating a Bot Account](https://javacord.org/wiki/getting-started/creating-a-bot-account.htm)
+ 
 ### Twitch4J
 * [Twitch4J - Chatbot Template](https://github.com/twitch4j/twitch4j-chatbot)
 * [Twitch4J - Kotlin Chatbot Template](https://github.com/twitch4j/twitch4j-chatbot-kotlin)
