@@ -10,3 +10,6 @@ This module contains links to the source code for examples from chapter 6 of the
 ### Twitch4J
 * [Twitch4J - Chatbot Template](https://github.com/twitch4j/twitch4j-chatbot)
 * [Twitch4J - Kotlin Chatbot Template](https://github.com/twitch4j/twitch4j-chatbot-kotlin)
+
+### Uber
+* [Uber Rides Java SDK Samples](https://github.com/uber/rides-java-sdk/tree/master/samples)
