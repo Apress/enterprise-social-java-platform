@@ -17,4 +17,5 @@ This module contains links to the source code for examples from chapter 6 of the
 * [Twitch4J - Kotlin Chatbot Template](https://github.com/twitch4j/twitch4j-chatbot-kotlin)
 
 ### Uber
+* [Uber Java Commandline Sample](uber-java-cmdline-sample)
 * [Uber Rides Java SDK Samples](https://github.com/uber/rides-java-sdk/tree/master/samples)
