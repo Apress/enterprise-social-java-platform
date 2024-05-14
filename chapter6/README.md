@@ -21,8 +21,9 @@ This module contains links to the source code for examples from chapter 6 of the
 ### Vertical Frameworks
 
 #### Uber
+* [Uber Jakarta Servlet Sample](uber-jakarta-servlet-sample)
 * [Uber Java Commandline Sample](uber-java-cmdline-sample)
-* [Uber Rides Java SDK Samples](https://github.com/uber/rides-java-sdk/tree/master/samples)
+* [Uber Rides Android SDK Samples](https://github.com/uber/rides-android-sdk/tree/main/samples)
 
 ### Legacy Frameworks
 

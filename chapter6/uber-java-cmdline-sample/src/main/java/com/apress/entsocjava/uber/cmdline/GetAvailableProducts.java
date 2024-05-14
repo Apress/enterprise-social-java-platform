@@ -1,12 +1,16 @@
 /*
- * Copyright (c) 2016 Uber Technologies, Inc.
+ * Copyright (c) 2024 Werner Keil
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to anyone obtaining a copy 
+ * of this software and associated documentation files (the "Software"), 
+ * to work with the Software within the limits of freeware distribution and fair use. 
+ * This includes the rights to use, copy, and modify the Software for personal use. 
+ * Users are also allowed and encouraged to submit corrections and modifications 
+ * to the Software for the benefit of other users.
+ * 
+ * It is not allowed to reuse,  modify, or redistribute the Software for 
+ * commercial use in any way, or for a user’s educational materials such as books 
+ * or blog articles without prior permission from the copyright holder. 
  *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
@@ -35,11 +39,12 @@ import com.uber.sdk.rides.client.UberRidesApi;
 import com.uber.sdk.rides.client.error.ApiError;
 import com.uber.sdk.rides.client.error.ClientError;
 import com.uber.sdk.rides.client.error.ErrorParser;
-import com.uber.sdk.rides.client.model.UserProfile;
-
+import com.uber.sdk.rides.client.model.Product;
+import com.uber.sdk.rides.client.model.ProductsResponse;
 import java.io.File;
 import java.io.FileReader;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 
 import retrofit2.Response;
@@ -47,9 +52,9 @@ import retrofit2.Response;
 /**
  * Demonstrates how to authenticate the user and load their profile via the command line.
  */
-public final class GetUserProfile {
+public final class GetAvailableProducts {
 
-    private GetUserProfile() {}
+    private GetAvailableProducts() {}
 
     private static LocalServerReceiver localServerReceiver;
 
@@ -64,10 +69,12 @@ public final class GetUserProfile {
         UberRidesApi uberRidesApi = UberRidesApi.with(session).build();
 
         RidesService service = uberRidesApi.createService();
-        // Fetch the user's profile.
-        System.out.println("Calling API to get the user's profile");
-        Response<UserProfile> response = service.getUserProfile().execute();
-
+        // Get a list of products for a specific location in GPS coordinates, example: 37.79f, -122.39f.
+        Response<ProductsResponse> response = service.getProducts(37.79f, -122.39f).execute();
+        List<Product> products = response.body().getProducts();
+        String productId = products.get(0).getProductId();
+        System.out.printf("Found product %s%n", productId);
+        System.out.println();
         ApiError apiError = ErrorParser.parseError(response);
         if (apiError != null) {
             // Handle error.
@@ -76,10 +83,6 @@ public final class GetUserProfile {
             System.exit(0);
             return;
         }
-
-        // Success!
-        UserProfile userProfile = response.body();
-        System.out.printf("Logged in as %s%n", userProfile.getEmail());
         System.exit(0);
     }
 
@@ -122,9 +125,6 @@ public final class GetUserProfile {
      * Creates an {@link OAuth2Credentials} object that can be used by any of the servlets.
      */
     public static OAuth2Credentials createOAuth2Credentials(SessionConfiguration sessionConfiguration) throws Exception {
-
-
-
 
         // Store the users OAuth2 credentials in their home directory.
         File credentialDirectory =
@@ -174,14 +174,14 @@ public final class GetUserProfile {
      */
     private static Properties loadSecretProperties() throws Exception {
         Properties properties = new Properties();
-        InputStream propertiesStream = GetUserProfile.class.getClassLoader().getResourceAsStream("secrets.properties");
+        InputStream propertiesStream = GetAvailableProducts.class.getClassLoader().getResourceAsStream("secrets.properties");
         if (propertiesStream == null) {
             // Fallback to file access in the case of running from certain IDEs.
             File buildPropertiesFile = new File("src/main/resources/secrets.properties");
             if (buildPropertiesFile.exists()) {
                 properties.load(new FileReader(buildPropertiesFile));
             } else {
-                buildPropertiesFile = new File("samples/cmdline-sample/src/main/resources/secrets.properties");
+                buildPropertiesFile = new File("uber-java-cmdline-sample/src/main/resources/secrets.properties");
                 if (buildPropertiesFile.exists()) {
                     properties.load(new FileReader(buildPropertiesFile));
                 } else {

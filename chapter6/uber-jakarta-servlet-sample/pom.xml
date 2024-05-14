@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.apress.entsocjava</groupId>
+		<artifactId>chapter6</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>uber-jakarta-servlet-sample</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Uber Java SDK Jakarta Servlet Sample</name>
+	<description>Jakarta Servlet Example App for Uber Java SDK</description>
+
+	<properties>
+        <jetty.version>11.0.20</jetty.version>
+        <uber.sdk.version>0.8.4</uber.sdk.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-io</artifactId>
+		    <version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-servlet</artifactId>
+		    <version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-server</artifactId>
+		    <version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-jetty</artifactId>
+			<version>1.36.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.uber.sdk</groupId>
+			<artifactId>uber-core-oauth-client-adapter</artifactId>
+			<version>${uber.sdk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.uber.sdk</groupId>
+			<artifactId>uber-rides</artifactId>
+			<version>${uber.sdk.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>maven-central-snapshots</id>
+			<name>Maven Central Snapshot Repository</name>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+</project>

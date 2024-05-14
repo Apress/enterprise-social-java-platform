@@ -14,10 +14,14 @@
     <name>Chapter 6 - Social Frameworks</name>
     <modules>
 		<module>bigbone-sample-java</module>
+		<module>uber-jakarta-servlet-sample</module>
 		<module>uber-java-cmdline-sample</module>
 	</modules>
 	
 	<properties>
+        <!-- Jakarta EE API -->
+        <jakartaee-api.version>10.0.0</jakartaee-api.version>
+
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
