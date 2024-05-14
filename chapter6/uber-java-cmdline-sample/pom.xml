@@ -17,6 +17,50 @@
 	<name>Uber Java SDK Commandline Sample</name>
 	<description>Example App for Uber Java SDK</description>
 
+	<properties>
+		<unit.jsr.version>2.2</unit.jsr.version>
+		<unit.ri.version>2.2</unit.ri.version>
+		<unit.lib.version>2.2</unit.lib.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>javax.measure</groupId>
+				<artifactId>unit-api</artifactId>
+				<version>${unit.jsr.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>tech.units</groupId>
+				<artifactId>indriya</artifactId>
+				<version>${unit.ri.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>tech.uom.lib</groupId>
+				<artifactId>uom-lib</artifactId>
+				<version>${unit.lib.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>tech.uom.lib</groupId>
+				<artifactId>uom-lib-common</artifactId>
+				<version>${unit.lib.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>${junit.jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest</artifactId>
+				<version>${hamcrest.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.google.oauth-client</groupId>
@@ -32,6 +76,18 @@
 			<groupId>com.uber.sdk</groupId>
 			<artifactId>uber-rides</artifactId>
 			<version>0.8.4</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.measure</groupId>
+			<artifactId>unit-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>tech.uom.lib</groupId>
+			<artifactId>uom-lib-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>tech.units</groupId>
+			<artifactId>indriya</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -117,7 +117,7 @@ public class Server {
             if (buildPropertiesFile.exists()) {
                 properties.load(new FileReader(buildPropertiesFile));
             } else {
-                buildPropertiesFile = new File("samples/servlet-sample/src/main/resources/secrets.properties");
+                buildPropertiesFile = new File("uber-jakarta-servlet-sample/src/main/resources/secrets.properties");
                 if (buildPropertiesFile.exists()) {
                     properties.load(new FileReader(buildPropertiesFile));
                 } else {

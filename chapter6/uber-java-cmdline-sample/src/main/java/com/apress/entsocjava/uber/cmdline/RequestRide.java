@@ -34,29 +34,38 @@ import com.uber.sdk.core.auth.OAuth2Credentials;
 import com.uber.sdk.core.client.CredentialsSession;
 import com.uber.sdk.core.client.SessionConfiguration;
 import com.uber.sdk.core.client.SessionConfiguration.Environment;
-import com.uber.sdk.rides.client.services.RidesService;
 import com.uber.sdk.rides.client.UberRidesApi;
 import com.uber.sdk.rides.client.error.ApiError;
 import com.uber.sdk.rides.client.error.ClientError;
 import com.uber.sdk.rides.client.error.ErrorParser;
-import com.uber.sdk.rides.client.model.Product;
-import com.uber.sdk.rides.client.model.ProductsResponse;
+import com.uber.sdk.rides.client.model.*;
+import com.uber.sdk.rides.client.services.RidesService;
+import retrofit2.Response;
+import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.quantity.Quantities;
+
+import javax.measure.Quantity;
+import javax.measure.Unit;
+import javax.measure.quantity.Length;
 import java.io.File;
 import java.io.FileReader;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
-import retrofit2.Response;
-
 /**
- * Demonstrates how to get available products via the command line.
+ * Demonstrates how to estimate, request and cancel a ride via the command line.
  */
-public final class GetAvailableProducts {
-
-    private GetAvailableProducts() {}
+public final class RequestRide {
+    private RequestRide() {}
 
     private static LocalServerReceiver localServerReceiver;
+
+    private static final float LAT_PICKUP = 37.79f;
+    private static final float LONG_PICKUP = -122.39f;
+
+    private static final float LAT_DROPOFF = 37.49f;
+    private static final float LONG_DROPOFF = -122.41f;
 
     public static void main(String[] args) throws Exception {
         // Create or load a credential for the user.
@@ -68,13 +77,51 @@ public final class GetAvailableProducts {
         // Create the Uber API service object once the User is authenticated
         UberRidesApi uberRidesApi = UberRidesApi.with(session).build();
 
-        RidesService service = uberRidesApi.createService();
+        final RidesService service = uberRidesApi.createService();
         // Get a list of products for a specific location in GPS coordinates, example: 37.79f, -122.39f.
-        Response<ProductsResponse> response = service.getProducts(37.79f, -122.39f).execute();
+        Response<ProductsResponse> response = service.getProducts(LAT_PICKUP, LONG_PICKUP).execute();
         List<Product> products = response.body().getProducts();
         String productId = products.get(0).getProductId();
         System.out.printf("Found product %s%n", productId);
         System.out.println();
+
+        // Get ride request parameters for product with start/end location
+        RideRequestParameters rideRequestParameters = new RideRequestParameters.Builder()
+                .setPickupCoordinates(LAT_PICKUP, LONG_PICKUP)
+                .setProductId(productId)
+                .setDropoffCoordinates(LAT_DROPOFF, LONG_DROPOFF)
+                .build();
+
+        // Get ride estimate for product with start/end location
+        RideEstimate rideEstimate = service.estimateRide(rideRequestParameters).execute().body();
+
+        // Create a typesafe distance quantity using JSR 385
+        if (rideEstimate != null && rideEstimate.getTrip() != null) {
+            Unit<Length> distanceUnit = AbstractUnit.parse(rideEstimate.getTrip().
+                    getDistanceUnit()).asType(Length.class);
+            Quantity<Length> distanceQuantity = Quantities.getQuantity(
+                    rideEstimate.getTrip().getDistanceEstimate(), distanceUnit);
+            System.out.printf("Distance %s%n", distanceQuantity);
+        }
+
+        // Request an Uber ride using request parameters above.
+        Ride ride = service.requestRide(rideRequestParameters).execute().body();
+        String rideId = ride.getRideId();
+
+        System.out.printf("Ride %s%n", rideId);
+        System.out.println();
+
+        // Request ride details from request_id
+        Ride rideDetails = service.getRideDetails(rideId).execute().body();
+
+        // Update a ride in the sandbox
+        SandboxRideRequestParameters sandboxRideParameters = new SandboxRideRequestParameters.Builder()
+                .setStatus("accepted").build();
+        Response<Void> sandboxResponse = service.updateSandboxRide(rideId, sandboxRideParameters).execute();
+
+        // Cancel a ride
+        Response<Void> cancelResponse = service.cancelRide(rideId).execute();
+
         ApiError apiError = ErrorParser.parseError(response);
         if (apiError != null) {
             // Handle error.
@@ -174,7 +221,7 @@ public final class GetAvailableProducts {
      */
     private static Properties loadSecretProperties() throws Exception {
         Properties properties = new Properties();
-        InputStream propertiesStream = GetAvailableProducts.class.getClassLoader().getResourceAsStream("secrets.properties");
+        InputStream propertiesStream = RequestRide.class.getClassLoader().getResourceAsStream("secrets.properties");
         if (propertiesStream == null) {
             // Fallback to file access in the case of running from certain IDEs.
             File buildPropertiesFile = new File("src/main/resources/secrets.properties");
