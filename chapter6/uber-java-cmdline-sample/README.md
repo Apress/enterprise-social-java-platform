@@ -1,6 +1,6 @@
 # Uber Rides Java SDK Commandline Sample
 
-Official Java SDK (beta) to support the Uber Rides API.
+Commandline sample project for the Uber Rides API.
 
 ## Running the sample
 

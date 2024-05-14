@@ -1,6 +1,6 @@
 # Uber Rides Java SDK Jakarta Servlet Sample
 
-Official Java SDK (beta) to support the Uber Rides API.
+Jakarta Servlet sample project for the Uber Rides API.
 
 ## Running the sample
 
