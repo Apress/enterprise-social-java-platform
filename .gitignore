@@ -29,6 +29,7 @@ release.properties
 
 # OS Files #
 .DS_Store
+*.bak
 
 # Gradle #
 .gradle
